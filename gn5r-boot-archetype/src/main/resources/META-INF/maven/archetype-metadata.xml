@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd" name="gn5rapl-archetype">
+
+  <requiredProperties>
+    <requiredProperty key="version">
+      <defaultValue>1.0.0-SNAPHOT</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="package">
+      <defaultValue>${groupId}.${artifactId.replaceAll("-", ".")}</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="name"></requiredProperty>
+    <requiredProperty key="packaging">
+      <defaultValue>war</defaultValue>
+      <validationRegex>(war|jar|pom)</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="gn5r-boot-version">
+      <defaultValue>1.0.0-SNAPSHOT</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="spring-boot-version">
+      <defaultValue>2.5.14</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
+
+  <fileSets>
+    <fileSet filtered="true" packaged="true" encoding="UTF-8">
+      <directory>src/main/java</directory>
+    </fileSet>
+    <fileSet filtered="true" packaged="true" encoding="UTF-8">
+      <directory>src/test/java</directory>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/main/resources</directory>
+      <includes>
+        <include>**/*.properties</include>
+      </includes>
+    </fileSet>
+    <!-- doma-gen template -->
+    <fileSet encoding="UTF-8">
+      <directory>src/main/resources/doma</directory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>src/main/resources</directory>
+      <includes>
+        <include>logback-spring.xml</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/test/resources</directory>
+    </fileSet>
+    <!-- .vscodeディレクトリをコピー -->
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>.vscode</directory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+    <!-- libディレクトリをコピー -->
+    <fileSet filtered="false" encoding="UTF-8">
+      <directory>lib</directory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+    </fileSet>
+    <!-- プロジェクトルートにファイルをコピー -->
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory></directory>
+      <includes>
+        <include>doma-gen-build.xml</include>
+        <include>.gitignore</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+</archetype-descriptor>

@@ -1,0 +1,9 @@
+{
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-11",
+      "path": "W:\\Tools\\Java\\jdk11.0.13_8",
+      "default": true
+    }
+  ]
+}

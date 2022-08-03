@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<configuration>
+  <property name="FORMAT" value="%-41(%d{yyyy-MM-dd HH:mm:ss} %-5p [%t]) %logger:%line - %msg%n" />
+  <timestamp key="TIME" datePattern="yyyyMMdd-HHmmss" />
+  <springProperty name="APP_NAME" source="logging.file.name" />
+  <springProperty name="LOG_DIR" source="logging.file.path" />
+  <springProperty name="CONSOLE_CHARSET" source="logging.charset.console" />
+  <springProperty name="FILE_CHARSET" source="logging.charset.file" />
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <charset>${CONSOLE_CHARSET}</charset>
+      <pattern>${FORMAT}</pattern>
+    </encoder>
+  </appender>
+
+  <!-- デフォルト環境 -->
+  <springProfile name="default">
+    <root level="${logging.level.root:-INFO}">
+      <appender-ref ref="STDOUT" />
+    </root>
+  </springProfile>
+
+  <!-- 試験、本番環境 -->
+  <springProfile name="development,staging,production">
+    <!-- システムログ -->
+    <appender name="SYSTEM" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <append>true</append>
+      <file>${LOG_DIR}/${APP_NAME}/${APP_NAME}_system.log</file>
+      <filter class="ch.qos.logback.classic.filter.LevelFilter">
+        <level>TRACE</level>
+        <onMatch>ACCEPT</onMatch>
+      </filter>
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${LOG_DIR}/${APP_NAME}/history/${APP_NAME}_system.%d{yyyy-MM-dd}.log.tar.gz</fileNamePattern>
+        <maxHistory>30</maxHistory>
+      </rollingPolicy>
+      <encoder>
+        <charset>${FILE_CHARSET}</charset>
+        <pattern>${FORMAT}</pattern>
+      </encoder>
+    </appender>
+
+    <!-- エラーログ -->
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <append>true</append>
+      <file>${LOG_DIR}/${APP_NAME}/${APP_NAME}_error.log</file>
+      <filter class="ch.qos.logback.classic.filter.LevelFilter">
+        <level>ERROR</level>
+        <onMatch>ACCEPT</onMatch>
+        <onMismatch>DENY</onMismatch>
+      </filter>
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${LOG_DIR}/${APP_NAME}/history/${APP_NAME}_error.%d{yyyy-MM-dd}.log.tar.gz</fileNamePattern>
+        <maxHistory>30</maxHistory>
+      </rollingPolicy>
+      <encoder>
+        <charset>${FILE_CHARSET}</charset>
+        <pattern>${FORMAT}</pattern>
+      </encoder>
+    </appender>
+
+    <!-- 警告ログ -->
+    <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <append>true</append>
+      <file>${LOG_DIR}/${APP_NAME}/${APP_NAME}_warn.log</file>
+      <filter class="ch.qos.logback.classic.filter.LevelFilter">
+        <level>WARN</level>
+        <onMatch>ACCEPT</onMatch>
+        <onMismatch>DENY</onMismatch>
+      </filter>
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${LOG_DIR}/${APP_NAME}/history/${APP_NAME}_warn.%d{yyyy-MM-dd}.log.tar.gz</fileNamePattern>
+        <maxHistory>30</maxHistory>
+      </rollingPolicy>
+      <encoder>
+        <charset>${FILE_CHARSET}</charset>
+        <pattern>${FORMAT}</pattern>
+      </encoder>
+    </appender>
+
+    <root>
+      <appender-ref ref="SYSTEM" />
+      <appender-ref ref="ERROR" />
+      <appender-ref ref="WARN" />
+      <appender-ref ref="STDOUT" />
+    </root>
+  </springProfile>
+</configuration>

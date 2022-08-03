@@ -1,0 +1,17 @@
+spring:
+  mail:
+    host: smtp-mail.outlook.com
+    port: 587
+    username: shangyuan.tuolang@outlook.com
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+logging:
+  level:
+    root: info
+    com.gitlab.gn5r: debug
