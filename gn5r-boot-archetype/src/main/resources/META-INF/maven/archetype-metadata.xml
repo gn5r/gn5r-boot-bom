@@ -28,10 +28,11 @@
     <fileSet filtered="true" packaged="true" encoding="UTF-8">
       <directory>src/test/java</directory>
     </fileSet>
+    <!-- spring boot property files -->
     <fileSet filtered="true" encoding="UTF-8">
       <directory>src/main/resources</directory>
       <includes>
-        <include>**/*.properties</include>
+        <include>**/*.yml</include>
       </includes>
     </fileSet>
     <!-- doma-gen template -->
