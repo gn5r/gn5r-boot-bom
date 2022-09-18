@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "application")
 public class ApplicationProperties {
 
-  /** デバッグモード */
+  /** Application Debug mode */
   private boolean debug = false;
 
   public void setDebug(boolean debug) {
