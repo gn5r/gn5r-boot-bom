@@ -1,0 +1,33 @@
+# application settings
+application:
+  debug: true
+
+# db settings
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://b3-plus.local:15432/dev?currentSchema=gn5rapl
+    username: dev
+    password: dev
+    type: com.zaxxer.hikari.HikariDataSource
+    # Hikari settings
+    hikari:
+      connection-timeout: 30 * 1000 #30s
+      maximum-pool-size: 5
+      minimum-idle: 2
+      leak-detection-threshold: 15 * 1000 #15s
+
+# doma settings
+doma:
+  dialect: postgres
+
+# logging settings
+logging:
+  level:
+    root: info
+  charset:
+    console: UTF-8
+    file: UTF-8
+  file:
+    path: /var/log/gn5rapl
+    name: ${artifactId}
