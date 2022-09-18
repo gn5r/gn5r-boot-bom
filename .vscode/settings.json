@@ -1,9 +1,20 @@
 {
-  "java.configuration.runtimes": [
+  // "java.configuration.runtimes": [
+  //   {
+  //     "name": "JavaSE-11",
+  //     "path": "W:\\Tools\\Java\\jdk11.0.16_8",
+  //     "default": true
+  //   }
+  // ],
+  "java.autobuild.enabled": true,
+  "maven.terminal.favorites": [
     {
-      "name": "JavaSE-11",
-      "path": "W:\\Tools\\Java\\jdk11.0.13_8",
-      "default": true
+      "alias": "install",
+      "command": "clean install"
+    },
+    {
+      "alias": "deploy",
+      "command": "clean deploy"
     }
   ]
 }
