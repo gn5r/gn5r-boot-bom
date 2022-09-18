@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.gitlab.gn5r.boot.commons.generator.FQCNBeanNameGenerator;
+import com.github.gn5r.boot.commons.generator.FQCNBeanNameGenerator;
 
 @SpringBootApplication
 @ComponentScan(nameGenerator = FQCNBeanNameGenerator.class)
