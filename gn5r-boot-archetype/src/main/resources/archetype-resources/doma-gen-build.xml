@@ -11,7 +11,7 @@
   <property name="password" value="dev"/>
   <property name="entityPackageName" value="${package}.entity"/>
   <property name="daoPackageName" value="${package}.repository"/>
-  <property name="configClassName" value="com.gitlab.gn5r.boot.autoconfigure.doma.AppConfig"/>
+  <property name="configClassName" value="com.github.gn5r.boot.autoconfigure.doma.AppConfig"/>
   <property name="sqlFilePattern" value="META-INF/**/*.sql"/>
   <property name="templatePrimaryDir" value="src/main/resources/doma/template"/>
   <property name="tableTypes" value="TABLE,VIEW"/>
