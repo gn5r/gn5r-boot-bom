@@ -6,5 +6,15 @@
   //     "path": "W:\\Tools\\Java\\jdk11.0.13_8",
   //     "default": true
   //   }
-  // ]
+  // ],
+  "maven.terminal.favorites": [
+    {
+      "alias": "build",
+      "command": "clean package"
+    },
+    {
+      "alias": "gen eclipse",
+      "command": "eclipse:eclipse"
+    }
+  ]
 }
