@@ -2,7 +2,7 @@
 
 ## Clone This Repository
 
-`git clone https://github.com/gn5r/gn5r-boot.git`
+`git clone https://github.com/gn5r/gn5r-boot-bom.git`
 
 `mvn install`
 
@@ -10,7 +10,7 @@
 
 ```
 mvn archetype:generate -DarchetypeGroupId=com.github.gn5r \
--DarchetypeArtifactId=gn5r-spring-boot-archetype \
+-DarchetypeArtifactId=gn5r-boot-archetype \
 -DarchetypeVersion=1.0.0-SNAPSHOT \
 -DgroupId=your project groupId \
 -DartifactId=your project artifactId \
