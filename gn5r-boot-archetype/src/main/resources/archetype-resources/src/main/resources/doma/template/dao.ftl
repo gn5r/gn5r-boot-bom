@@ -21,6 +21,8 @@ import org.seasar.doma.boot.ConfigAutowireable;
 <#if lib.author??>
  * @author ${lib.author}
 </#if>
+ *
+ * @see ${entityDesc.simpleName}
  */
 @Dao<#if configClassSimpleName??>(config = ${configClassSimpleName}.class)</#if>
 <#-- Autowiredをするには@ConfigAutowireableが必要 -->
@@ -28,48 +30,48 @@ import org.seasar.doma.boot.ConfigAutowireable;
 public interface ${simpleName} {
 
 <#if entityDesc.idEntityPropertyDescs?size gt 0>
-    /**
+  /**
 <#list entityDesc.idEntityPropertyDescs as property>
-     * @param ${property.name} ${property.comment}
+   * @param ${property.name} ${property.comment}
 </#list>
-     * @return ${entityDesc.comment}Entity
-     * @see ${entityDesc.simpleName} ${entityDesc.comment}Entity
-     */
-    @Select
-    public ${entityDesc.simpleName} selectById(<#list entityDesc.idEntityPropertyDescs as property>${property.propertyClassSimpleName} ${property.name}<#if property_has_next>, </#if></#list>);
+   * @return ${entityDesc.comment}Entity
+   * @see ${entityDesc.simpleName} ${entityDesc.comment}Entity
+   */
+  @Select
+  public ${entityDesc.simpleName} selectById(<#list entityDesc.idEntityPropertyDescs as property>${property.propertyClassSimpleName} ${property.name}<#if property_has_next>, </#if></#list>);
 
 </#if>
 <#if entityDesc.idEntityPropertyDescs?size gt 0 && entityDesc.versionEntityPropertyDesc??>
-    /**
+  /**
 <#list entityDesc.idEntityPropertyDescs as property>
-     * @param ${property.name} ${property.comment}
+   * @param ${property.name} ${property.comment}
 </#list>
-     * @param ${entityDesc.versionEntityPropertyDesc.name} ${entityDesc.versionEntityPropertyDesc.comment}
-     * @return ${entityDesc.comment}Entity
-     * @see ${entityDesc.simpleName} ${entityDesc.comment}Entity
-     */
-    @Select(ensureResult = true)
-    public ${entityDesc.simpleName} selectByIdAndVersion(<#list entityDesc.idEntityPropertyDescs as property>${property.propertyClassSimpleName} ${property.name}, </#list>${entityDesc.versionEntityPropertyDesc.propertyClassSimpleName} ${entityDesc.versionEntityPropertyDesc.name});
+   * @param ${entityDesc.versionEntityPropertyDesc.name} ${entityDesc.versionEntityPropertyDesc.comment}
+   * @return ${entityDesc.comment}Entity
+   * @see ${entityDesc.simpleName} ${entityDesc.comment}Entity
+   */
+  @Select(ensureResult = true)
+  public ${entityDesc.simpleName} selectByIdAndVersion(<#list entityDesc.idEntityPropertyDescs as property>${property.propertyClassSimpleName} ${property.name}, </#list>${entityDesc.versionEntityPropertyDesc.propertyClassSimpleName} ${entityDesc.versionEntityPropertyDesc.name});
 
 </#if>
-    /**
-     * @param entity ${entityDesc.comment}
-     * @return affected rows
-     */
-    @Insert
-    public int insert(${entityDesc.simpleName} entity);
+  /**
+   * @param entity ${entityDesc.comment}
+   * @return affected rows
+   */
+  @Insert
+  public int insert(${entityDesc.simpleName} entity);
 
-    /**
-     * @param entity ${entityDesc.comment}
-     * @return affected rows
-     */
-    @Update
-    public int update(${entityDesc.simpleName} entity);
+  /**
+   * @param entity ${entityDesc.comment}
+   * @return affected rows
+   */
+  @Update
+  public int update(${entityDesc.simpleName} entity);
 
-    /**
-     * @param entity ${entityDesc.comment}
-     * @return affected rows
-     */
-    @Delete
-    public int delete(${entityDesc.simpleName} entity);
+  /**
+   * @param entity ${entityDesc.comment}
+   * @return affected rows
+   */
+  @Delete
+  public int delete(${entityDesc.simpleName} entity);
 }
