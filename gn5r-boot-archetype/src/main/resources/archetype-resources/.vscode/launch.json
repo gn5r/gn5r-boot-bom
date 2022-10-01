@@ -9,7 +9,8 @@
       "name": "Debug",
       "request": "launch",
       "mainClass": "${package}.${name}Application",
-      "projectName": "${artifactId}"
+      "projectName": "${artifactId}",
+      "vmArgs": "-Dspring.profiles.active=default"
     }
   ]
 }

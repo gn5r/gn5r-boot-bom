@@ -22,6 +22,28 @@
     </root>
   </springProfile>
 
+  <!-- ローカル環境 -->
+  <springProfile name="local">
+    <!-- ログファイル -->
+    <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <append>true</append>
+      <file>${LOG_DIR}/${APP_NAME}/${APP_NAME}.log</file>
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${LOG_DIR}/${APP_NAME}/history/${APP_NAME}.%d{yyyy-MM-dd}.log.tar.gz</fileNamePattern>
+        <maxHistory>30</maxHistory>
+      </rollingPolicy>
+      <encoder>
+        <charset>${FILE_CHARSET}</charset>
+        <pattern>${FORMAT}</pattern>
+      </encoder>
+    </appender>
+
+    <root level="${logging.level.root:-INFO}">
+      <appender-ref ref="STDOUT" />
+      <appender-ref ref="LOGFILE" />
+    </root>
+  </springProfile>
+
   <!-- 試験、本番環境 -->
   <springProfile name="development,staging,production">
     <!-- システムログ -->
