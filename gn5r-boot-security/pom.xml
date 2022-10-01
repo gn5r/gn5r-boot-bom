@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.github.gn5r</groupId>
     <artifactId>gn5r-boot</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
 
   <artifactId>gn5r-boot-security</artifactId>
