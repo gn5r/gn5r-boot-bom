@@ -18,6 +18,11 @@
       <artifactId>spring-boot-configuration-processor</artifactId>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
     <!-- gn5r-boot-modules -->
     <dependency>
       <groupId>com.github.gn5r</groupId>
@@ -49,6 +54,15 @@
       <groupId>org.seasar.doma</groupId>
       <artifactId>doma</artifactId>
       <optional>true</optional>
+    </dependency>
+    <!-- swagger2 -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
     </dependency>
   </dependencies>
 

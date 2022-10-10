@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.github.gn5r.boot.autoconfigure.modelmapper.ModelMapperConfiguration,\
 com.github.gn5r.boot.autoconfigure.doma.AppConfig,\
-com.github.gn5r.boot.autoconfigure.app.ApplicationPropertiesAutoconfiguration
+com.github.gn5r.boot.autoconfigure.app.ApplicationPropertiesAutoconfiguration,\
+com.github.gn5r.boot.autoconfigure.swagger.SwaggerAutoConfiguration
