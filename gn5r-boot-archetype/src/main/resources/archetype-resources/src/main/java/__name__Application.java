@@ -10,8 +10,7 @@ import com.github.gn5r.boot.commons.generator.FQCNBeanNameGenerator;
 @ComponentScan(nameGenerator = FQCNBeanNameGenerator.class)
 public class ${name}Application {
 
-	public static void main(String[] args) {
-		SpringApplication.run(${name}Application.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(${name}Application.class, args);
+  }
 }
