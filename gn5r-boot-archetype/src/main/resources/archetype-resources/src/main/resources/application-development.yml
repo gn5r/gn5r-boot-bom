@@ -12,10 +12,10 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     # Hikari settings
     hikari:
-      connection-timeout: 30 * 1000 #30s
+      connection-timeout: 30000 #30s
       maximum-pool-size: 5
       minimum-idle: 2
-      leak-detection-threshold: 15 * 1000 #15s
+      leak-detection-threshold: 15000 #15s
 
 # doma settings
 doma:
