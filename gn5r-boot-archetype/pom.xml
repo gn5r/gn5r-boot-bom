@@ -2,10 +2,20 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.gn5r</groupId>
   <artifactId>gn5r-boot-archetype</artifactId>
-  <version>1.1.0-SNAPSHOT</version>
+  <version>1.1.0</version>
   <packaging>maven-archetype</packaging>
   <name>gn5r-boot-archetype</name>
   <description>Spring Boot application archetype for gn5r</description>
+  <distributionManagement>
+    <repository>
+      <id>nexus</id>
+      <url>http://b3-plus.local:32768/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus</id>
+      <url>http://b3-plus.local:32768/repository/maven-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
   <build>
     <extensions>
       <extension>
