@@ -8,6 +8,13 @@ server:
   servlet:
     context-path: /
 
+# swagger setting
+swagger:
+  base-package: ${package}
+  ui:
+    title:
+    description:
+
 # db settings
 spring:
   datasource:

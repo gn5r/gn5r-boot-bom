@@ -1,6 +1,9 @@
-# application settings
-application:
-  debug: true
+# swagger setting
+swagger:
+  base-package: ${package}
+  ui:
+    title:
+    description:
 
 # db settings
 spring:
