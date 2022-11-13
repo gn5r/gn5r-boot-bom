@@ -7,15 +7,22 @@ ARCHETYPE_ARTIFACT_ID=gn5r-boot-archetype
 # maven archetype version
 ARCHETYPE_VERSION=1.1.0-SNAPSHOT
 
-if [ -n $1 ]; then
+if [ -n "$1" ]; then
+  echo ディレクトリ指定あり
   # ターゲットディレクトリが存在するかチェック
-  if [ ! -d $1 ]; then
+  if [ ! -d "$1" ]; then
     echo 指定したディレクトリが存在しません: "$(pwd)/${1}"
     exit 1
   fi
   cd $1
+  echo mavenディレクトリ: "$(pwd)"
+else
+  echo ディレクトリ指定なし
+  cd $(pwd)
+  echo mavenディレクトリ: "$(pwd)"
 fi
 
+echo mavenコマンドを実行します...
 mvn archetype:generate -DarchetypeGroupId=$ARCHETYPE_GROUP_ID \
 -D archetypeArtifactId=$ARCHETYPE_ARTIFACT_ID \
 -D archetypeVersion=$ARCHETYPE_VERSION
