@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
     <groupId>com.github.gn5r</groupId>
     <artifactId>gn5r-boot</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1-SNAPSHOT</version>
   </parent>
-
   <artifactId>gn5r-boot-mail</artifactId>
   <packaging>jar</packaging>
   <name>gn5rapl-boot-mail</name>
-
   <properties>
     <maven.test.skip>true</maven.test.skip>
   </properties>
-
   <dependencies>
     <!-- springframework -->
     <dependency>
