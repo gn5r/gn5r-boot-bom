@@ -5,21 +5,18 @@ ARCHETYPE_GROUP_ID=com.github.gn5r
 # maven archetype artifactId
 ARCHETYPE_ARTIFACT_ID=gn5r-boot-archetype
 # maven archetype version
-ARCHETYPE_VERSION=1.1.0-SNAPSHOT
+ARCHETYPE_VERSION=1.2.0-SNAPSHOT
 
 if [ -n "$1" ]; then
-  echo ディレクトリ指定あり
   # ターゲットディレクトリが存在するかチェック
   if [ ! -d "$1" ]; then
     echo 指定したディレクトリが存在しません: "$(pwd)/${1}"
     exit 1
   fi
   cd $1
-  echo mavenディレクトリ: "$(pwd)"
 else
-  echo ディレクトリ指定なし
+  # ディレクトリに指定が無ければコマンドを実行しているディレクトリに移動
   cd $(pwd)
-  echo mavenディレクトリ: "$(pwd)"
 fi
 
 echo mavenコマンドを実行します...
