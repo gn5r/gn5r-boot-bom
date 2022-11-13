@@ -14,7 +14,7 @@
       <validationRegex>(war|jar|pom)</validationRegex>
     </requiredProperty>
     <requiredProperty key="gn5r-boot-version">
-      <defaultValue>1.1.0</defaultValue>
+      <defaultValue>1.1.1-SNAPSHOT</defaultValue>
     </requiredProperty>
     <requiredProperty key="spring-boot-version">
       <defaultValue>2.5.14</defaultValue>
