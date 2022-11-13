@@ -14,7 +14,9 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class ModelMapperAutoConfiguration {
 
   private static final Logger log = LoggerFactory.getLogger(ModelMapperAutoConfiguration.class);
