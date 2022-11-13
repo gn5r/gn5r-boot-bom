@@ -1,4 +1,4 @@
-package com.github.gn5r.boot.security.mode;
+package com.github.gn5r.boot.security.model;
 
 import java.util.Collection;
 import java.util.List;
