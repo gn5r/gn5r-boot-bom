@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+# maven archetype groupId
+ARCHETYPE_GROUP_ID=com.github.gn5r
+# maven archetype artifactId
+ARCHETYPE_ARTIFACT_ID=gn5r-boot-archetype
+# maven archetype version
+ARCHETYPE_VERSION=1.1.0-SNAPSHOT
+
+if [ -n $1 ]; then
+  # ターゲットディレクトリが存在するかチェック
+  if [ ! -d $1 ]; then
+    echo 指定したディレクトリが存在しません: "$(pwd)/${1}"
+    exit 1
+  fi
+  cd $1
+fi
+
+mvn archetype:generate -DarchetypeGroupId=$ARCHETYPE_GROUP_ID \
+-D archetypeArtifactId=$ARCHETYPE_ARTIFACT_ID \
+-D archetypeVersion=$ARCHETYPE_VERSION
