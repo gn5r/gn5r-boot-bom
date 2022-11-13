@@ -15,9 +15,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 
-public class ModelMapperConfiguration {
+public class ModelMapperAutoConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(ModelMapperConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(ModelMapperAutoConfiguration.class);
 
   /**
    * yyyy-MM-dd
@@ -29,6 +29,9 @@ public class ModelMapperConfiguration {
    */
   private static final DateTimeFormatter YMDHMS = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+  /**
+   * StringからLocalDateに変換する設定
+   */
   private static final Converter<String, LocalDate> stringToLocalDateConverter = new AbstractConverter<String, LocalDate>() {
     @Override
     protected LocalDate convert(String source) {
@@ -44,6 +47,9 @@ public class ModelMapperConfiguration {
     }
   };
 
+  /**
+   * LocalDateからStringに変換する設定
+   */
   private static final Converter<LocalDate, String> localDateToStringConverter = new AbstractConverter<LocalDate, String>() {
     @Override
     protected String convert(LocalDate source) {
@@ -59,6 +65,9 @@ public class ModelMapperConfiguration {
     }
   };
 
+  /**
+   * StringからLocalDateTimeに変換する設定
+   */
   private static final Converter<String, LocalDateTime> stringToLocalDateTimeConverter = new AbstractConverter<String, LocalDateTime>() {
     @Override
     protected LocalDateTime convert(String source) {
@@ -74,6 +83,9 @@ public class ModelMapperConfiguration {
     }
   };
 
+  /**
+   * LocalDateTimeからStringに変換する設定
+   */
   private static final Converter<LocalDateTime, String> localDateTimeToStringConverter = new AbstractConverter<LocalDateTime, String>() {
     @Override
     protected String convert(LocalDateTime source) {
