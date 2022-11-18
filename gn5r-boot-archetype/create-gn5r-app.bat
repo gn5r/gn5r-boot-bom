@@ -6,7 +6,7 @@ set ARCHETYPE_GROUP_ID=com.github.gn5r
 @REM maven archetype artifactId
 set ARCHETYPE_ARTIFACT_ID=gn5r-boot-archetype
 @REM maven archetype version
-set ARCHETYPE_VERSION=1.2.0-SNAPSHOT
+set ARCHETYPE_VERSION=1.3.0-SNAPSHOT
 
 @REM 引数が渡されているかチェック
 @if not "%1" == "" (
