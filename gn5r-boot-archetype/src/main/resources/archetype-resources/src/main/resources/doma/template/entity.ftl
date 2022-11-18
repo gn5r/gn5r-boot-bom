@@ -1,8 +1,15 @@
 <#-- このテンプレートに対応するデータモデルのクラスは org.seasar.doma.extension.gen.EntityDesc です -->
 
+<#--  数値型のクラス名  -->
+<#assign numericClassNames = ["Integer", "Long", "Short", "Double", "Float"]>
+
 <#function convertDataType dataType>
   <#local result = dataType?replace("Date", "LocalDate")>
   <#local result = dataType?replace("Timestamp", "LocalDateTime")>
+  <#--  数値型をBigDecimalへ変換する  -->
+  <#if numericClassNames?seq_contains(dataType)>
+    <#local result = dataType?replace(dataType, "BigDecimal")>
+  </#if>
   <#return result>
 </#function>
 
@@ -10,6 +17,19 @@
   <#local result = packageName?replace("java.sql.Date", "java.time.LocalDate")>
   <#local result = packageName?replace("java.sql.Timestamp", "java.time.LocalDateTime")>
   <#return result>
+</#function>
+
+<#--  java.lang.*の数値型が変数にあるか判定する  -->
+<#function hasNumeric propertyDescs>
+  <#list numericClassNames as className>
+    <#--  org.seasar.doma.extension.gen.EntityDesc.ownEntityPropertyDescs  -->
+    <#list propertyDescs as property>
+      <#if property.propertyClassSimpleName?contains(className)>
+        <#return true>
+      </#if>
+    </#list>
+  </#list>
+  <#return false>
 </#function>
 
 <#import "/lib.ftl" as lib>
@@ -27,10 +47,14 @@ package ${packageName};
 import ${convertImportType(importName)};
 </#if>
 </#list>
+<#--  変数にjava.langの数値型を含む場合はBigDecimalをインポートする  -->
+<#if hasNumeric(ownEntityPropertyDescs)>
+import java.math.BigDecimal;
+</#if>
 
 /**
 <#if showDbComment && comment??>
- * ${comment}Entity
+ * ${comment}のエンティティクラス
 </#if>
 <#if lib.author??>
  * @author ${lib.author}
@@ -65,9 +89,6 @@ public class ${simpleName}<#if superclassSimpleName??> extends ${superclassSimpl
   <#if property.version>
   @Version
   </#if>
-  <#--  --if property.showColumnName && property.columnName??>
-    @Column(name = "${property.columnName}")
-  </#if-->
   <#-- namingTypeがNONEじゃない場合はColumnをアノテートしない -->
   <#if namingType == "NONE" && property.showColumnName && property.columnName??>
   @Column(name = "${property.columnName}")
@@ -93,9 +114,16 @@ public class ${simpleName}<#if superclassSimpleName??> extends ${superclassSimpl
    * @return ${property.name}
   </#if>
    */
+  <#--  Boolean型の場合はGetterをisXXXにする  -->
+  <#if ["Boolean", "boolean"]?seq_contains(property.propertyClassSimpleName)>
+  public ${convertDataType(property.propertyClassSimpleName)} is${property.name?cap_first}() {
+    return ${property.name};
+  }
+  <#else>
   public ${convertDataType(property.propertyClassSimpleName)} get${property.name?cap_first}() {
     return ${property.name};
   }
+  </#if>
 
   /**
   <#if showDbComment && property.comment??>

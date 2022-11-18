@@ -11,7 +11,7 @@
 ```
 mvn archetype:generate -DarchetypeGroupId=com.github.gn5r \
 -DarchetypeArtifactId=gn5r-boot-archetype \
--DarchetypeVersion=1.0.0-SNAPSHOT \
+-DarchetypeVersion=1.3.0-SNAPSHOT \
 -DgroupId=your project groupId \
 -DartifactId=your project artifactId \
 -Dname=your Application Name \
@@ -27,8 +27,8 @@ mvn archetype:generate -DarchetypeGroupId=com.github.gn5r \
 |       groupId       |       Project GroupId        |                       -                        |
 |     artifactId      |      Project ArtifactId      |                       -                        |
 |       version       |       Project version        |                 1.0.0-SNAPSHOT                 |
-|      packaging      |      Project packaging       |                      jar                       |
+|      packaging      |      Project packaging       |                      war                       |
 |       package       |     Project package FQCN     | \${groupId}.${artifactId.replaceAll("-", ".")} |
 |        name         | Prefix for Application Class |                       -                        |
-|  gn5r-boot-version  |   gn5r-spring-boot version   |                 1.0.0-SNAPSHOT                 |
+|  gn5r-boot-version  |   gn5r-spring-boot version   |                 1.1.1-SNAPSHOT                 |
 | spring-boot-version |  spring-spring-boot version  |                     2.5.14                     |
